@@ -20,8 +20,8 @@
     <meta name="twitter:image" content="https://teknoalien.github.io/x_x/logo.png">
     
     <!-- Additional SEO -->
-    <meta name="description" content="Created by Valor.">
-    <meta name="keywords" content="cybersecurity, internet safety, digital privacy">
+    <meta name="description" content="Cybersecurity guide">
+    <meta name="keywords" content="cybersecurity, internet safety, digital privacy, VPN, encryption, phishing, malware, security guide">
     <meta name="author" content="Valor">
     
     <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
@@ -124,6 +124,19 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 0 25px rgba(255,0,0,0.6), 0 0 40px rgba(255,0,0,0.3);
+            animation: emergencyPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes emergencyPulse {
+            0%, 100% {
+                border-color: #ff0000;
+                box-shadow: 0 0 25px rgba(255,0,0,0.6), 0 0 40px rgba(255,0,0,0.3);
+            }
+            50% {
+                border-color: #ff3333;
+                box-shadow: 0 0 35px rgba(255,0,0,0.9), 0 0 60px rgba(255,0,0,0.5);
+            }
         }
 
         #emergency-access:hover {
@@ -341,9 +354,8 @@
             font-size: 2.5em;
             margin: 0;
             text-shadow: 
-                0 0 5px rgba(255,0,0,0.6),
-                0 0 10px rgba(255,0,0,0.4),
-                0 0 20px rgba(255,0,0,0.2);
+                0 0 3px rgba(255,0,0,0.4),
+                0 0 8px rgba(255,0,0,0.2);
             font-weight: 900;
             letter-spacing: 3px;
             font-family: 'Orbitron', sans-serif;
@@ -689,7 +701,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            animation: fadeOutSmooth 2s ease-in-out 3s forwards;
+            animation: fadeOutSmooth 2s ease-in-out 4s forwards;
             overflow: hidden;
         }
 
@@ -847,7 +859,6 @@
         .tooltip {
             position: relative;
             color: #ff4444;
-            border-bottom: 1px dotted #ff4444;
             cursor: help;
             transition: color 0.2s ease;
         }
@@ -1055,6 +1066,8 @@
                         <li>Don't put personal contact info in your public profile or Discord bio</li>
                         <li>Use different usernames for different platforms to prevent <span class="tooltip">cross-referencing<span class="tooltiptext">Linking your different accounts together to build a profile about you</span></span></li>
                         <li>Use a separate "<span class="tooltip">burner<span class="tooltiptext">Temporary/disposable phone number you can throw away</span></span>" number for signups (Google Voice, MySudo, Burner)</li>
+                        <li>Enable WHOIS privacy on all domains you own - Without it, your name, email, phone, and address are publicly searchable. Most registrars offer privacy protection for $3-5/year</li>
+                        <li>Limit social media exposure - Attackers research targets on social media. Don't post workplace details, vacation plans, family info, or location data. Set profiles to private</li>
                     </ul>
                 </div>
 
@@ -1063,6 +1076,7 @@
                     <ul>
                         <li>Don't share photos that can be <span class="tooltip">reverse-searched<span class="tooltiptext">Using Google Images or TinEye to find where else a photo appears online</span></span> or traced to your social accounts</li>
                         <li>Remove <span class="tooltip">metadata<span class="tooltiptext">Hidden information embedded in files (location, date, device used)</span></span> (<span class="tooltip">EXIF<span class="tooltiptext">Exchangeable Image File Format - hidden data in photos that can reveal location, camera, date/time</span></span>) and avoid posting the same photo across multiple platforms</li>
+                        <li>Strip metadata before sharing documents/photos - Use <span class="tooltip">ExifTool<span class="tooltiptext">Command-line tool to view and remove metadata from images and files</span></span> or <span class="tooltip">MAT2<span class="tooltiptext">Metadata Anonymisation Toolkit - removes metadata from documents, images, and audio files</span></span> to clean files. Photos contain location data, camera model, and timestamps</li>
                         <li>Don't send face pics or identifying media to people you don't fully trust</li>
                     </ul>
                 </div>
@@ -1072,8 +1086,17 @@
                     <ul>
                         <li>Use a strong password manager + generator</li>
                         <li>Use a unique strong password for each account to prevent credential reuse attacks</li>
+                        <li>Minimum password length: 16+ characters - Length matters more than complexity. Longer passwords exponentially increase cracking time</li>
+                        <li>Consider <span class="tooltip">passphrases<span class="tooltiptext">Multiple random words combined into a long memorable password, e.g., "correct-horse-battery-staple"</span></span> for master passwords - easier to remember, harder to crack (e.g., "correct-horse-battery-staple" or "blue-mountain-coffee-sunrise")</li>
                         <li>Consider open-source password managers (e.g., <span class="tooltip">Bitwarden<span class="tooltiptext">Free, open-source password manager with end-to-end encryption</span></span>) for transparency</li>
+                        <li>Never use password "hints" - they're searchable and often give away your password</li>
+                        <li>Only change passwords after a confirmed breach - Routine password changes don't improve security and lead to weaker, predictable passwords</li>
+                        <li>Never share passwords, even with family or trusted friends - use password manager sharing features if needed</li>
+                        <li>Beware of fake password reset emails - always navigate to the site directly, never click email links</li>
                         <li>Enable <span class="tooltip">2FA<span class="tooltiptext">Two-Factor Authentication - requires a second verification step beyond your password</span></span> wherever possible (app/hardware tokens are more secure than SMS)</li>
+                        <li>Avoid SMS-based 2FA when possible - use authenticator apps (Google Authenticator, Aegis, Authy) instead. SMS can be hijacked through <span class="tooltip">SIM swapping<span class="tooltiptext">Attack where attacker convinces your carrier to transfer your number to their SIM card</span></span> attacks</li>
+                        <li>Protect against SIM swapping - Contact your carrier to enable a carrier PIN/password on your account. This prevents attackers from transferring your number without the PIN</li>
+                        <li>Never click links in text messages - SMS phishing (smishing) is common. Verify sender by calling the official number or navigating to the website directly</li>
                         <li>Don't reuse recovery emails or phone numbers across many accounts</li>
                     </ul>
                 </div>
@@ -1084,6 +1107,22 @@
                         <li>Be careful with account recovery info—it can be abused if attackers know it</li>
                         <li>Keep recovery channels private and distinct</li>
                         <li>Use a secondary, dedicated recovery address not publicly connected to your identity</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>Email security</h3>
+                    <ul>
+                        <li>Use end-to-end encrypted email providers (ProtonMail) for sensitive communications</li>
+                        <li>Never click links in unsolicited emails - navigate to sites directly by typing the URL</li>
+                        <li>Check sender addresses carefully - attackers use look-alike domains (paypa1.com vs paypal.com)</li>
+                        <li>Enable email <span class="tooltip">SPF<span class="tooltiptext">Sender Policy Framework - validates that emails are sent from authorized servers</span></span>, <span class="tooltip">DKIM<span class="tooltiptext">DomainKeys Identified Mail - cryptographically verifies email authenticity</span></span>, and <span class="tooltip">DMARC<span class="tooltiptext">Domain-based Message Authentication - tells servers how to handle emails that fail authentication</span></span> if you own a domain - prevents email spoofing</li>
+                        <li>Be suspicious of urgent requests, especially those involving money or credentials</li>
+                        <li>Verify sender identity through separate channel (call official number, not the one in email)</li>
+                        <li>Use temporary email providers for signups you don't care about (Temp-Mail.org, Guerrilla Mail) - disposable addresses that don't require registration. Warning: you can't recover accounts if you lose access since the email is temporary</li>
+                        <li>Disable automatic image loading in emails - tracking pixels report when you open emails</li>
+                        <li>Don't reply to spam - confirms your email is active</li>
+                        <li>Use separate email accounts for different purposes (personal, work, shopping, throwaway)</li>
                     </ul>
                 </div>
 
@@ -1149,6 +1188,7 @@
                         <li>Use <span class="tooltip">full-disk encryption<span class="tooltiptext">Encrypting your entire hard drive so data is unreadable if device is stolen</span></span> (<span class="tooltip">VeraCrypt<span class="tooltiptext">Free, open-source disk encryption software - encrypts your entire drive to protect data if device is stolen</span></span> for Windows, FileVault for Mac, LUKS for Linux)</li>
                         <li>Cover your webcam when not in use or use a physical privacy shutter</li>
                         <li>Disable microphone access for apps and services you don't fully trust</li>
+                        <li>Enable file extension visibility in File Explorer - Malware often disguises itself as harmless files (e.g., "invoice.pdf.exe" looks like "invoice.pdf" if extensions are hidden). Windows: File Explorer → View → Show file extensions. Mac: Finder → Preferences → Show all filename extensions</li>
                         <li>Never use public USB charging stations (airports, hotels, cafes) - they can install malware or steal data (juice jacking). Use your own charger and wall outlet, or bring a power bank</li>
                         <li>Never plug in unknown USB drives - they can contain malware that auto-runs when inserted. Treat all found USBs as hostile</li>
                         <li>Disable USB auto-run features on your computer to prevent automatic malware execution</li>
@@ -1159,6 +1199,27 @@
                         <li>Use a strong <span class="tooltip">BIOS/UEFI<span class="tooltiptext">Basic Input/Output System - firmware that starts your computer before the operating system loads</span></span> password to prevent boot-level attacks</li>
                         <li>Enable automatic screen lock after short idle periods</li>
                         <li>For maximum security, consider using <span class="tooltip">Tails OS<span class="tooltiptext">Privacy-focused operating system that runs from USB and leaves no trace on the computer</span></span> (live operating system that leaves no traces)</li>
+                        <li>Close unnecessary ports - audit yourself with Nmap - Open ports are entry points for attackers. Scan your own system with <span class="tooltip">Nmap<span class="tooltiptext">Network mapper - powerful tool to scan for open ports and services on a network</span></span> to see what's exposed, then close unused ports</li>
+                        <li>Use firewall to block unused services - Enable Windows Firewall, UFW (Linux), or pfSense. Block all incoming connections except what you need. Default deny, explicit allow</li>
+                        <li>Disable service banners that reveal software versions - Configure web servers (Apache/Nginx) to hide version numbers in HTTP headers. Attackers use version info to find exploits</li>
+                        <li>Use intrusion detection systems for advanced users - <span class="tooltip">Snort<span class="tooltiptext">Open-source intrusion detection system that monitors network traffic for suspicious activity</span></span> or <span class="tooltip">Suricata<span class="tooltiptext">High-performance network IDS/IPS that detects and prevents intrusions</span></span> can detect reconnaissance attempts and attacks in real-time</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>Router & IoT security</h3>
+                    <ul>
+                        <li>Change default router password immediately - Default credentials are publicly known. Use strong unique password for router admin panel</li>
+                        <li>Never expose <span class="tooltip">IoT<span class="tooltiptext">Internet of Things - smart devices connected to internet (cameras, thermostats, speakers, locks, etc.)</span></span> devices directly to internet - Smart cameras, thermostats, and speakers should never be accessible from outside your network. Use VPN for remote access</li>
+                        <li>Put IoT devices on separate network - Create guest/isolated VLAN for smart devices so they can't access your main computers if compromised</li>
+                        <li>Disable UPnP on router - <span class="tooltip">UPnP<span class="tooltiptext">Universal Plug and Play - allows devices to automatically open ports, creating security risks</span></span> automatically opens ports and creates security holes. Manually configure port forwarding only when needed</li>
+                        <li>Change default credentials on ALL IoT devices - Smart cameras, NAS drives, printers - everything has default passwords that attackers know</li>
+                        <li>Update router firmware regularly - Routers are rarely updated but contain critical vulnerabilities. Check manufacturer site quarterly</li>
+                        <li>Disable WPS on router - <span class="tooltip">WPS<span class="tooltiptext">WiFi Protected Setup - allows easy connection but has major security flaws that can be exploited</span></span> has known vulnerabilities that allow attackers to crack WiFi passwords in hours</li>
+                        <li>Use WPA3 encryption if available - Upgrade from WPA2. If router doesn't support WPA3, at minimum use WPA2-AES (never WPA or WEP)</li>
+                        <li>Disable remote management on router unless absolutely necessary</li>
+                        <li>Review connected devices regularly - Unknown device = potential intruder</li>
+                        <li>Consider using custom router firmware (<span class="tooltip">OpenWrt<span class="tooltiptext">Open-source router firmware with latest security patches and active development - recommended over DD-WRT</span></span> recommended) for advanced security features - OpenWrt uses latest LTS kernel while DD-WRT uses older EOL kernels with known vulnerabilities</li>
                     </ul>
                 </div>
 
@@ -1183,8 +1244,13 @@
                     <ul>
                         <li>Avoid cloud storage whenever possible—store sensitive files locally with <span class="tooltip">encryption<span class="tooltiptext">Converting data into unreadable code that only you can decrypt</span></span> (VeraCrypt)</li>
                         <li>If you must use cloud, use Proton Drive or <span class="tooltip">self-host<span class="tooltiptext">Run your own server/storage instead of using third-party services</span></span> your own solution</li>
+                        <li>Follow the 3-2-1 backup rule: Keep 3 copies of your data (1 primary + 2 backups), on 2 different types of media (e.g., internal drive + external HDD + USB), with 1 copy stored offsite (physically separate location or secure cloud)</li>
+                        <li>Prefer physical encrypted backups over cloud - Use external HDDs or SSDs with <span class="tooltip">hardware encryption<span class="tooltiptext">Built-in encryption chip in the drive itself - no software needed</span></span> or VeraCrypt encryption. Cloud backups can be accessed by providers, law enforcement, or hackers</li>
+                        <li>Test your backups regularly - Many people discover their backups are corrupted only when they need them. Verify you can actually restore files every few months</li>
+                        <li>Air-gapped backups for ransomware protection - Keep one backup completely disconnected from your computer (physically unplug external drive when not backing up). Ransomware cannot encrypt offline drives</li>
+                        <li>Use versioned backups/snapshots - Keep multiple versions of files so you can restore from before corruption or ransomware encryption</li>
+                        <li>Encrypt backup drives with strong passwords - If drive is stolen, data remains protected</li>
                         <li>Securely delete files—don't just delete them (use secure erase tools like BleachBit, Eraser)</li>
-                        <li>Back up important data encrypted in multiple locations (<span class="tooltip">3-2-1 backup rule<span class="tooltiptext">3 copies of data, on 2 different types of media, with 1 copy offsite</span></span>)</li>
                         <li>Don't screenshot or save sensitive info in unencrypted notes apps</li>
                         <li>Use password-protected <span class="tooltip">archives<span class="tooltiptext">Compressed files (.zip, .7z) that bundle multiple files together</span></span> (7-Zip with <span class="tooltip">AES-256<span class="tooltiptext">Advanced Encryption Standard - military-grade encryption algorithm</span></span>) for sensitive file sharing</li>
                         <li>Verify file integrity with <span class="tooltip">checksums<span class="tooltiptext">Unique fingerprint of a file to verify it hasn't been tampered with</span></span> when downloading important files</li>
@@ -1372,14 +1438,14 @@
         }
 
         // Start typing AFTER loading screen finishes (starts sooner)
-        setTimeout(typeCharacter, 5100);
+        setTimeout(typeCharacter, 6100);
 
         // Terminal boot sequence
         const bootSequence = [
             "> BOOTING SECURITY SYSTEM...",
             "> LOADING ENCRYPTION KEYS...",
             "> INITIALIZING FIREWALL...",
-            "> SYSTEM READY"
+            "> SYSTEM READY - ACCESS GRANTED"
         ];
         
         let bootIndex = 0;
@@ -1393,11 +1459,16 @@
                     bootCharIndex++;
                     setTimeout(typeBootText, 25);
                 } else {
+                    // Make last message green
+                    if (bootIndex === bootSequence.length - 1) {
+                        loadingTextElement.style.color = '#00ff00';
+                    }
                     bootCharIndex = 0;
                     bootIndex++;
                     if (bootIndex < bootSequence.length) {
                         setTimeout(() => {
                             loadingTextElement.textContent = '';
+                            loadingTextElement.style.color = '#ff0000';
                             typeBootText();
                         }, 200);
                     }
@@ -1430,7 +1501,7 @@
         setTimeout(() => {
             clearInterval(percentInterval);
             document.body.classList.remove('loading');
-        }, 5500);
+        }, 6500);
 
         // Scroll to Top Button
         const scrollToTopBtn = document.getElementById('scroll-to-top');
